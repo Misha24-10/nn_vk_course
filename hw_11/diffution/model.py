@@ -22,7 +22,7 @@ class ExpandingLayer(nn.Module):
 
 
 class DiffusionModel(pl.LightningModule):
-    def __init__(self, in_size, t_range, img_depth):
+    def __init__(self, in_size, t_range, img_depth, cdf=False):
         super().__init__()
         self.beta_small = 1e-4
         self.beta_large = 0.02
@@ -32,9 +32,7 @@ class DiffusionModel(pl.LightningModule):
         self.n_classes = 10
         self.img_depth = img_depth
         self.h_w = 32
-        
-        self.cdf = True
-
+        self.cdf = cdf
         self.cdf_scale = 1
 
         
